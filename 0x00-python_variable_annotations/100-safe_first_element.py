@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script for advanced task 1 (100)
+Script for Task 10 (First Advanced Task)
 """
 from typing import Any, Sequence, Union
 
