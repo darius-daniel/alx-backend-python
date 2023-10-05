@@ -12,4 +12,4 @@ def sum_mixed_list(mxd_list: List[Union[float, int]]) -> float:
     :param mxd_list: a mixed list of floats and ints
     :return: the sum of all the values in @mxd_list
     """
-    return sum(mxd_list)
+    return float(sum(mxd_list))
