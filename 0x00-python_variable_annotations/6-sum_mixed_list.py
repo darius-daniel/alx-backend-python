@@ -2,10 +2,10 @@
 """
 Contains a function that takes a mixed list and returns their sum as a float
 """
-import typing
+from typing import List, Union
 
 
-def sum_mixed_list(mxd_list: typing.List[typing.Union[float, int]]) -> float:
+def sum_mixed_list(mxd_list: List[Union[float, int]]) -> float:
     """
     Takes in a list of mixed values (ints and floats) and returns their float
 
