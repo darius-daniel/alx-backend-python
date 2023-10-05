@@ -1,4 +1,4 @@
-#!/user/bin/env python3
+#!/usr/bin/env python3
 """
 Contains a function that returns the sum of two floating point numbers.
 """
