@@ -2,7 +2,7 @@
 """2. Run time for four parallel comprehensions"""
 import time
 import asyncio
-from typing import Callable, Generator, List
+from typing import AsyncGenerator
 
 async_comprehension = __import__('1-async_comprehension').async_comprehension
 
@@ -16,14 +16,13 @@ async def measure_runtime() -> float:
     """
     start: float = time.time()
     await asyncio.gather(
-        *[func() async for func in call_async_comprehension(4)])
+        *[async_comprehension() async for num in number(4)])
     end: float = time.time()
 
     return end - start
 
 
-async def call_async_comprehension(
-        times: int) -> Generator[Callable[[], List[float]], None, None]:
+async def number(times: int) -> AsyncGenerator[int, None]:
     """
     Yields async_comprehension @times times
     :param times: number of times async_comprehension is yielded by the
@@ -31,5 +30,5 @@ async def call_async_comprehension(
     :return: Nothing
     """
     for i in range(times):
+        yield i
         await asyncio.sleep(1)
-        yield async_comprehension
