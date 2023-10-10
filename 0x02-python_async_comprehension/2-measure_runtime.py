@@ -23,7 +23,7 @@ async def measure_runtime() -> float:
 
 
 async def call_async_comprehension(
-        times: int) -> Generator[Callable[[], List[int]], None, None]:
+        times: int) -> Generator[Callable[[], List[float]], None, None]:
     """
     Yields async_comprehension @times times
     :param times: number of times async_comprehension is yielded by the
