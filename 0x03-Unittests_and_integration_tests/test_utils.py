@@ -57,11 +57,14 @@ class TestMemoize(unittest.TestCase):
     """Suite of tests for the memoize function"""
     def test_memoize(self):
         class TestClass:
+            """A nested test class"""
             def a_method(self):
+                """A dummy function within the test class"""
                 return 42
 
             @memoize
             def a_property(self):
+                """Another dummy function"""
                 return self.a_method()
 
         with patch.object(
