@@ -2,8 +2,10 @@
 """ 0. Parameterize a unit test
 """
 import unittest
+import utils
 from parameterized import parameterized
 from utils import access_nested_map, get_json
+from unittest.mock import patch, Mock, MagicMock
 from typing import Dict, Sequence, Union, Type
 
 
@@ -40,8 +42,16 @@ class TestAccessNestedMap(unittest.TestCase):
 
 class TestGetJson(unittest.TestCase):
     """Suite of tests for utils.get_json"""
-    def test_get_json(self):
-        pass
+    @parameterized.expand([
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False})
+    ])
+    def test_get_json(self, url: str, payload: Dict):
+        """Tests the output of the function get_json."""
+        attrs = {'json.return_value': payload}
+        with patch("requests.get", return_value=Mock(**attrs)) as fetched:
+            self.assertEqual(get_json(url), payload)
+            fetched.assert_called_once_with(url)
 
 
 if __name__ == '__main__':
